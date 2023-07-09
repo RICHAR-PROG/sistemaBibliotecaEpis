@@ -8,7 +8,7 @@
 
 @section('content')
     <div class="row">
-        <div class="col-md-8 mx-auto border py-2">
+        <div class="col-md-8 mx-auto  py-2">
 
             {{-- Muestra un error del formulario --}}
             @if ($errors->any())

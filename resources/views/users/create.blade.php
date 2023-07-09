@@ -3,12 +3,13 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1 class="text-center m-0">Añadir usuarios </h1>
+    {{-- <h1 class="text-center m-0">Añadir usuarios </h1> --}}
+    <br>
 @endsection
 
 @section('content')
     <div class="row">
-        <div class="col-md-8 mx-auto border py-2">
+        <div class="col-md-8 mx-auto  py-2">
 
             {{-- Muestra un error del formulario --}}
             @if ($errors->any())
@@ -100,8 +101,6 @@
 
                 </div>
             </div>
-
-
         </div>
     </div>
 

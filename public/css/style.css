@@ -1,0 +1,24 @@
+.editar {
+    background-color: transparent;
+    border-color: transparent;
+    border-radius: 0;
+  }
+  
+  .editar:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-color: rgba(0, 0, 0, 0.1);
+  }
+
+  .eliminar{
+    background-color: transparent;
+    border-color: transparent;
+    border-radius: 0;
+    color: red;
+  }
+  
+  .eliminar:hover {
+    background-color: rgba(255, 90, 90, 0.2);
+    border-color: rgba(255, 90, 90, 0.2);;
+    color: red;
+  }
+  
