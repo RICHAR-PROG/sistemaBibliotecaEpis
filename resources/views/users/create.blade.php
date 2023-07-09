@@ -9,7 +9,7 @@
 
 @section('content')
     <div class="row">
-        <div class="col-md-8 mx-auto  py-2">
+        <div class="col-md-7 mx-auto  ">
 
             {{-- Muestra un error del formulario --}}
             @if ($errors->any())
@@ -24,7 +24,7 @@
             @endif
 
 
-            <div class="card">
+            <div class="card card-danger card-outline">
                 <div class="card-header">{{ __('Nuevo usuario') }}</div>
 
                 <div class="card-body">

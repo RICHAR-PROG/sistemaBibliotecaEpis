@@ -23,7 +23,7 @@
             @endif
 
 
-            <div class="card">
+            <div class="card card-danger card-outline"">
                 <div class="card-header">{{ __('Actualizar usuario') }}</div>
 
                 <div class="card-body">

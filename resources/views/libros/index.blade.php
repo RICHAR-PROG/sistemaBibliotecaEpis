@@ -59,7 +59,7 @@
                                         <form action="{{url('/libros/'.$lib->id)}}" method="post">
                                             @csrf
                                             {{method_field('DELETE')}}
-                                            <button type="submit" onclick="return confirm('¿Quieres borrar?')" class="btn btn-outline-transparent eliminar "  > <i class='fas fa-trash'></i>Eliminar
+                                            <button type="submit" onclick="return confirm('¿Quieres borrar?')" class="btn btn-outline-transparent eliminar "  > <i class='fas fa-trash'></i>
                                             </button>
                                         </form>
                                     </div>
