@@ -1,3 +1,6 @@
+@if(Auth::check())
+    <span class="hidden-xs">{{ Auth::user()->name }}</span>
+@endif
 @extends('adminlte::page')
 
 @section('title', 'Dashboard')
@@ -6,7 +9,6 @@
     <h1 class="text-center">Agregar usuario</h1>
 @stop
 
-@section('content')
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -99,8 +101,8 @@
         </div>
     </div>
 </div>
+
 @endsection
-@stop
 
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">

@@ -1,40 +1,45 @@
- <div class="form-group">
-    <label for="nombre">Nombre:</label>
-    <input type="text" class="form-control" value="{{ isset($usuarios->nombre) ? $usuarios->nombre : '' }}"id="nombre"
-        name="nombre" required>
+<input type="hidden" name="id" value="{{ $usuarios->id }}">
+
+<div class="row mb-3">
+    <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
+
+    <div class="col-md-6">
+        <input id="name" type="text" class="form-control" name="name" value="{{ $usuarios->name }}">
+    </div>
 </div>
-<div class="form-group">
-    <label for="correo">Correo:</label>
-    <input type="email" class="form-control" value="{{ isset($usuarios->correo) ? $usuarios->correo : '' }}"
-        id="correo" name="correo" required>
-</div>
-<div class="form-group">
-    <label for="password">Password</label>
-    <input type="password" class="form-control" id="password" name="password" required>
-</div>
-<div class="form-group">
-    <label for="dni">DNI:</label>
-    <input type="text" class="form-control" value="{{ isset($usuarios->dni) ? $usuarios->dni : '' }}" id="dni"
-        name="dni" required>
+
+<div class="row mb-3">
+    <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('institutional mail') }}</label>
+
+    <div class="col-md-6">
+        <input id="email" type="email" class="form-control" name="email" value="{{ $usuarios->email }}">
+    </div>
 </div>
 
 
-<div class="form-group">
-    <label for="repeat_password">Repetir contraseña:</label>
-    <input type="password" class="form-control" id="repeat_password" name="repeat_password" required>
-</div>
-<div class="form-group">
-    <label for="type_user">Tipo de usuario:</label>
-    <select class="form-control" id="type_user" name="type_user" required>
-        <option value="">Seleccione una opción</option>
-        <option value="ADMIN" {{ isset($usuarios->type_user) && $usuarios->type_user == 'ADMIN' ? 'selected' : '' }}>
-            Administrador</option>
-        <option value="USER" {{ isset($usuarios->type_user) && $usuarios->type_user == 'USER' ? 'selected' : '' }}>
-            Usuario</option>
+<div class="row mb-3">
+    <label for="dni" class="col-md-4 col-form-label text-md-end">{{ __('DNI') }}</label>
 
-    </select>
+    <div class="col-md-6">
+        <input id="ID" type="text" class="form-control" name="ID" placeholder="DNI" value="{{ $usuarios->dni }}">
+    </div>
 </div>
 
+<div class="row mb-3">
+    <label for="type_user" class="col-md-4 col-form-label text-md-end">{{ __('User type') }}</label>
 
-<button type="submit" class="btn btn-primary">{{$mode}} usuario</button>
-<a href="{{url('users/')}}" class="btn btn-secondary ml-auto ">Regresar</a> 
+    <div class="col-md-6">
+        <select name="type_user">
+            <option value="admin" {{ $usuarios->type_user == 'admin' ? 'selected' : '' }}>Admin</option>
+            <option value="user" {{ $usuarios->type_user == 'user' ? 'selected' : '' }}>User</option>
+        </select>
+    </div>
+</div>
+
+<div class="row mb-0">
+    <div class="col-md-6 offset-md-4">
+        <button type="submit" class="btn btn-primary">
+            {{ __('Actualizar') }}
+        </button>
+    </div>
+</div>
