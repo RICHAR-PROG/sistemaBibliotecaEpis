@@ -31,8 +31,19 @@ class LibrosController extends Controller
     {
         $datosLibro=request()->except('_token');
 
+        // return $datosLibro;
+
         if($request->hasFile('imagen')){
-            $datosLibro['imagen']=$request->file('imagen')->store('uploads', 'public');
+            // $datosLibro['imagen']=$request->file('imagen')->store('uploads', 'public');
+            
+            $file = $request->file('imagen');
+            $nombre_archivo = time().$file->getClientOriginalName();
+
+            //Se sube la imagen a la carpeta public/storage/libros/
+            $file->move(public_path()."/storage/libros/", $nombre_archivo);
+            
+            $datosLibro['imagen'] = $nombre_archivo;
+
         }
 
         Libros::insert($datosLibro);

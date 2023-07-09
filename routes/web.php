@@ -8,24 +8,27 @@ use App\Http\Controllers\ReportesController;
 
 
 
-Route::get('/', function () {
-    return view('index');
-});
+// Route::get('/', function () {
+//     return view('index');
+// });
+
+Route::view('/', 'index')->name('index');
+
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
+// Auth::routes();
 
 // Route::get('/register', [App\Http\Controllers\HomeController::class, 'showRegistrationForm'])->name('auth.register');
 
 // Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::resource('users', UsuariosController::class);
-Route::resource('libros', LibrosController::class);
-Route::resource('reportes', reportesController::class);
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
+Route::resource('users', UsuariosController::class)->middleware('auth');
+Route::resource('libros', LibrosController::class)->middleware('auth');
+Route::resource('reportes', reportesController::class)->middleware('auth');
 
 // Route::get('/users/create', [UsuariosController::class,'create']);
 
@@ -37,7 +40,6 @@ Route::get('/userpage', function () {
 });
 
 // Route::get('/register',[App\Http\Controllers\Auth\RegisterController::class, ''])->name('home');
-
 
 
 

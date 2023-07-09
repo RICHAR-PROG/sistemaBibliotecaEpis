@@ -1,3 +1,6 @@
+@if(Auth::check())
+    <span class="hidden-xs">{{ Auth::user()->name }}</span>
+@endif
 @extends('adminlte::page')
 
 @section('title', 'Dashboard')
@@ -98,6 +101,7 @@
         </div>
     </div>
 </div>
+
 @endsection
 
 @section('css')

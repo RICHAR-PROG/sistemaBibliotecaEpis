@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Hash;
 
 class UsuariosController extends Controller
 {
@@ -33,9 +33,24 @@ class UsuariosController extends Controller
      */
     public function store(Request $request)
     {
-        $datosUsuario=request()->except('_token');
-        User::insert($datosUsuario);
-        return redirect('users');
+
+        $request->validate([
+            'dni' => 'required|digits:8|string|unique:users',
+            'password' => 'required|min:8|string',
+            'password_confirm' => 'required|same:password',
+        ]);
+
+
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->dni = $request->dni;
+        $user->type_user = $request->type_user;
+        $user->password = Hash::make($request->password);
+
+        $user->save();
+        
+        return redirect()->route('users.index');
     }
 
     /**
@@ -51,20 +66,27 @@ class UsuariosController extends Controller
      */
     public function edit($id )
     {
-        $usuarios=User::findOrFail($id);
-        return view('users.edit',compact('usuarios'));
+        $usuario = User::findOrFail($id);
+        return view('users.edit', compact('usuario'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        $datosUsuario=request()->except(['_token','_method']);
-        User::where('id','=',$id)->update($datosUsuario);
-
-        $usuarios=User::findOrFail($id);
-        return view('users.edit',compact('usuarios'));
+        $request->validate([
+            'dni' => 'required|digits:8|string',
+        ]);
+    
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->dni = $request->dni;
+        $user->type_user = $request->type_user;
+        
+        $user->save();
+        
+        return redirect()->route('users.index');
     }
 
     /**

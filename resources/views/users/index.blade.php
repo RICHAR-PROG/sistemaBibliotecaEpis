@@ -11,51 +11,7 @@
 @endsection
 
 @section('content')
-    {{-- <a href="{{ url('users/create') }}" class="btn btn-success my-2"> Registrar nuevo usuario<i class="bi bi-person-fill-add"></i></a>
-    <div class="row">
-        <div class="card-body">
-            <div class="">
-                <table class="w-100 table table-sm table-striped table-bordered" id="users">
-                    <thead class="bg-gradient-info text-center">
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Apellido</th>
-                            <th>DNI</th>
-                            <th>Correo</th>
-                            <th>Tipo de usuario</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($usuarios as $user)
-                            <tr>
-                                <td>{{ $user->nombre }}</td>
-                                <td>{{ $user->apellido }}</td>
-                                <td>{{ $user->dni }}</td>
-                                <td>{{ $user->correo }}</td>
-                                <td>{{ $user->type_user }}</td>
-                                <td>
-                                    <div style="display: flex; align-items: center;">
-                                        <a href="{{ url('/users/' . $user->id . '/edit') }}" class="btn btn-primary"
-                                            style="margin-right: 10px;"><i class="fas fa-sync"></i>Editar</a>
-                                        <form action="{{ url('/users/' . $user->id) }}" method="post">
-                                            @csrf
-                                            {{ method_field('DELETE') }}
-                                            <button type="submit" onclick="return confirm('¿Quieres borrar?')"
-                                                class="btn btn-danger "> <i class='fas fa-trash'></i> ELiminar
-                                            </button>
-                                        </form>
-                                    </div>
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div> --}}
-
-
+    
 
     <div class="container-fluid py-5">
         <div class="card card-danger card-outline">
@@ -67,7 +23,7 @@
                 <div class="row">
                     <div class="col-md-2 my-3">
                         
-                        <a href="{{ route('register') }}" class="btn btn-block btn-outline-primary "> <i class="fas fa-plus"></i> Registrar usuario<i class="bi bi-person-fill-add"></i></a>
+                        <a href="{{ route('users.create') }}" class="btn btn-block btn-outline-primary "> <i class="fas fa-plus"></i> Registrar usuario<i class="bi bi-person-fill-add"></i></a>
 
                     </div>
 
@@ -94,16 +50,18 @@
                                         <td>{{ $user->email }}</td>
                                         <td>{{ $user->type_user }}</td>
                                         <td>
-                                            <div style="display: flex; align-items: center;">
-                                                <a href="{{ url('/users/' . $user->id . '/edit') }}" class="btn btn-primary"
-                                                    style="margin-right: 10px;"><i class="fas fa-sync"></i>Editar</a>
-                                                    <form action="{{ url('/users/' . $user->id) }}" method="post" id="deleteForm{{ $user->id }}">
-                                                        @csrf
-                                                        {{ method_field('DELETE') }}
-                                                        <button type="submit" class="btn btn-warning eliminar" onclick="deleteUser({{ $user->id }})">
-                                                            <i class='fas fa-trash'></i> Eliminar
-                                                        </button>
-                                                    </form>
+                                            <div class="d-flex justify-content-center">
+                                                <a href="{{ route('users.edit', $user->id) }}" class="btn btn-outline-info mr-2">
+                                                     <i class="fas fa-edit"></i> Editar
+                                                </a>
+
+                                                <form action="{{ route('users.destroy', $user->id) }}" method="post" id="deleteForm{{ $user->id }}">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-outline-danger eliminar" onclick="deleteUser({{ $user->id }})">
+                                                         <i class='fas fa-trash'></i> Eliminar
+                                                    </button>
+                                                </form>
                                             </div>
                                         </td>
                                     </tr>
@@ -134,14 +92,14 @@
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Sí, elimínalo!'
+            confirmButtonText: 'Sí, eliminar!'
         }).then((result) => {
             if (result.isConfirmed) {
                 // submit the form if the user confirms
                 $('#deleteForm' + userId).off('submit').submit();
                 Swal.fire(
                     '¡Eliminado!',
-                    'Tu archivo ha sido eliminado.',
+                    'El registro ha sido eliminado.',
                     'success'
                 )
             }
