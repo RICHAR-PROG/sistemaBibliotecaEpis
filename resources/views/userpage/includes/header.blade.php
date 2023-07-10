@@ -36,7 +36,7 @@
                     <a class="nav-link nav-link-2" href="videos.html">Boletas</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link nav-link-3" href="about.html">Calificacion</a>
+                    <a class="nav-link nav-link-3" href="{{ url('userpage/calificacion') }}">Calificacion</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link nav-link-4" href="contact.html">siuu</a>

@@ -30,7 +30,12 @@ Route::get('/userpage', function () {
         'footer' => view('userpage.includes.footer'),
     ]);
 });
-
+Route::get('/userpage/calificacion', function () {
+    return view('userpage.page.calificacion', [
+        'header' => view('userpage.includes.header'),
+        'footer' => view('userpage.includes.footer'),
+    ]);
+});
 // Route::get('/register',[App\Http\Controllers\Auth\RegisterController::class, ''])->name('home');
 
 
