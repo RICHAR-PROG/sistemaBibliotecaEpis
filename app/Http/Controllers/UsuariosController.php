@@ -14,9 +14,10 @@ class UsuariosController extends Controller
      */
     public function index()
     {
-        //
-        $datos['usuarios']=User::paginate();
-        return view('users.index',$datos);
+        
+        $datos = User::all();
+
+        return view('users.index', ['usuarios' => $datos ] );
 
     }
 
@@ -27,7 +28,7 @@ class UsuariosController extends Controller
     {
         return view('users.create');
     }
-
+ 
     /**
      * Store a newly created resource in storage.
      */
