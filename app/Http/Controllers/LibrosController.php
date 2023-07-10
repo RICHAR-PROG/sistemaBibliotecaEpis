@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\libros;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 class LibrosController extends Controller
 {
     /**
@@ -90,10 +91,14 @@ class LibrosController extends Controller
      */
     public function destroy($id)
     {
-        $libros=Libros::findOrFail($id);
-        if(Storage::delete('public/'.$libros->imagen)){
-            Libros::destroy($id);
-        }
+        $libro = Libros::findOrFail($id);
+
+        $file_path = public_path().'/storage/libros/'.$libro->imagen;
+        File::delete($file_path);
+
+        $libro->delete();
+
+
         return redirect('libros');
     }
 }
