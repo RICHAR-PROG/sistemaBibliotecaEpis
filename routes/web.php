@@ -17,18 +17,10 @@ Route::view('/', 'index')->name('index');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-// Auth::routes();
-
-// Route::get('/register', [App\Http\Controllers\HomeController::class, 'showRegistrationForm'])->name('auth.register');
-
-// Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
-Route::resource('users', UsuariosController::class)->middleware('auth');
-Route::resource('libros', LibrosController::class)->middleware('auth');
-Route::resource('reportes', reportesController::class)->middleware('auth');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth.admin');
+Route::resource('users', UsuariosController::class)->middleware('auth.admin');
+Route::resource('libros', LibrosController::class)->middleware('auth.admin');
+Route::resource('reportes', reportesController::class)->middleware('auth.admin');
 
 // Route::get('/users/create', [UsuariosController::class,'create']);
 

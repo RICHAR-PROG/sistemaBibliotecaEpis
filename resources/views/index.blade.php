@@ -11,6 +11,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
 
 </head>
@@ -37,39 +39,53 @@
                 <li><a href="https://goo.gl/maps/YGddP8BJ74DW9uu5A" target="_blank">Ubicación</a></li>
                 <li><a href="https://sistemas.unh.edu.pe/" target="_blank">Contactenos</a></li>
                 <li class="dropdown" style="color: white">
-                    <span>Ingresar
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                            class="bi bi-person-circle" viewBox="0 0 16 16">
-                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-                            <path fill-rule="evenodd"
-                                d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
-                        </svg>
-                    </span>
-                    <ul style="margin:15px; padding:5px; width:150px; border-radius: 5px;">
-                        {{-- <li class="">
-                            <a href="{{ route('login') }}" class="p-4"> Login</a>
-                        </li> --}}
-                        <a type="button" class="btn " data-bs-toggle="modal" data-bs-target="#admin"
-                            style="color: white">
-                            Administrador
-                        </a>
-                        <a type="button" class="btn " data-bs-toggle="modal" data-bs-target="#student"
-                            style="color: white">
-                            Estudiante
-                        </a>
-                    </ul>
+
+                    @auth
+
+                        @if (Auth::user()->type_user == 'admin')
+                            <a class="btn" href="{{route('users.index')}}">                        
+                                Dashboard
+                            </a>                        
+                        @endif
+
+                        @if (Auth::user()->type_user == 'user')
+                            <a class="btn" href="">                        
+                                Home
+                            </a>                        
+                        @endif
+                   
+                    @endauth
+                    
+                    @guest
+                        <a type="button" class="btn" data-bs-toggle="modal" data-bs-target="#admin">                        
+                            Ingresar
+                            <i class="bi bi-person-circle"></i>
+                        </a>                    
+                    @endguest
+
+
+                    
+                   
                 </li>
             </ul>
         </nav>
     </header>
 
+
+
+
     <main>
+
+        {{-- TOAST --}}
+        {{-- <div id="toastsContainerTopRight" class="toasts-top-right fixed z-100"><div class="toast bg-danger fade show" role="alert" aria-live="assertive" aria-atomic="true"><div class="toast-header"><strong class="mr-auto">Toast Title</strong><small>Subtitle</small><button data-dismiss="toast" type="button" class="ml-2 mb-1 close" aria-label="Close"><span aria-hidden="true">×</span></button></div><div class="toast-body">Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</div></div></div> --}}
+
+
         <div class="modal fade " id="admin" tabindex="3" data-bs-backdrop="static" data-bs-keyboard="false"
             role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
             <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered " role="document">
                 <div class="modal-content bg-white">
                     <div class="modal-header">
-                        <h5 class="modal-title text-dark" id="modalTitleId">ADMINISTRADOR</h5>
+                        <h5 class="modal-title text-dark" id="modalTitleId">INICIAR SESIÓN</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <img src="{{ asset('storage/img/sistemas.png') }}" alt="Logo Sistemas" class="logos">
@@ -79,8 +95,6 @@
                                 <form method="POST" action="{{ route('login') }}">
                                     @csrf
                                     <div class="row mb-3">
-
-
                                         <div class="col-md-12">
                                             <input id="email" type="email"
                                                 class="form-control @error('email') is-invalid @enderror" name="email"
@@ -140,7 +154,7 @@
             </div>
         </div>
 
-        <div class="modal fade shadow-lg" id="student" tabindex="3" data-bs-backdrop="static"
+        {{-- <div class="modal fade shadow-lg" id="student" tabindex="3" data-bs-backdrop="static"
             data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
             <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered " role="document">
                 <div class="modal-content shadow-lg bg-white">
@@ -213,7 +227,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
     </main>
     <section class="section1-center">
@@ -225,7 +239,7 @@
         </div>
     </section>
     <footer class="pie_pagina">
-        <p class="text-center">©Copyright 2050 EQUIPO 4. Todos los derechos reservados.</p>
+        <p class="text-center">©Copyright {{date('Y')}} EQUIPO 4. Todos los derechos reservados.</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
