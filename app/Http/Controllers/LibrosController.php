@@ -36,13 +36,13 @@ class LibrosController extends Controller
 
         if($request->hasFile('imagen')){
             // $datosLibro['imagen']=$request->file('imagen')->store('uploads', 'public');
-            
+
             $file = $request->file('imagen');
             $nombre_archivo = time().$file->getClientOriginalName();
 
             //Se sube la imagen a la carpeta public/storage/libros/
             $file->move(public_path()."/storage/libros/", $nombre_archivo);
-            
+
             $datosLibro['imagen'] = $nombre_archivo;
 
         }
@@ -75,9 +75,14 @@ class LibrosController extends Controller
     {
         $datosLibro=request()->except(['_token','_method']);
         if($request->hasFile('imagen')){
-            $libros=Libros::findOrFail($id);
-            Storage::delete('public/'.$libros->imagen);
-            $datosLibro['imagen']=$request->file('imagen')->store('uploads', 'public');
+
+            $file =$request->file('imagen');
+            $nombre_archivo = time().$file->getClientOriginalName();
+
+            //Se sube la imagen a la carpeta public/storage/libros/
+            $file->move(public_path()."/storage/libros/", $nombre_archivo);
+
+            $datosLibro['imagen'] = $nombre_archivo;
         }
 
         Libros::where('id','=',$id)->update($datosLibro);
