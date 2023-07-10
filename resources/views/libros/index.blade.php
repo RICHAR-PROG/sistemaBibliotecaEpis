@@ -24,9 +24,9 @@
 
                 </div>
 
-                <div class="col-md-12 justify-content-center">
+                <div class="col-md-12 justify-content-center table-responsive">
                     <table
-                        class="table table-sm table-striped   table-full-width table-hover align-middle"
+                        class="table table-sm table-striped table-hover align-middle"
                         id="libros">
                         <thead class="bg-gradient-danger text-center">
                             <tr>
@@ -54,12 +54,12 @@
                                 <td>{{ $lib->stock }}</td>
                                 <td>{{ $lib->formato }}</td>
                                 <td>
-                                    <div style="display: flex; align-items: center;" >
-                                        <a href="{{ url('/libros/'.$lib->id.'/edit')}}" class="btn btn-transparent editar mr-2" ><i class="fas fa-sync"></i>Editar</a>
+                                    <div class="d-flex ">
+                                        <a href="{{ url('/libros/'.$lib->id.'/edit')}}" class="btn btn-outline-info btn-sm mr-2" ><i class="fas fa-edit"></i></a>
                                         <form action="{{url('/libros/'.$lib->id)}}" method="post">
                                             @csrf
                                             {{method_field('DELETE')}}
-                                            <button type="submit" onclick="return confirm('¿Quieres borrar?')" class="btn btn-outline-transparent eliminar "  > <i class='fas fa-trash'></i>
+                                            <button type="submit" onclick="return confirm('¿Quieres borrar?')" class="btn btn-outline-danger btn-sm "  > <i class='fas fa-trash'></i>
                                             </button>
                                         </form>
                                     </div>

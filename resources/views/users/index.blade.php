@@ -52,14 +52,14 @@
                                         <td>{{ $user->type_user }}</td>
                                         <td>
                                             <div class="d-flex justify-content-center">
-                                                <a href="{{ route('users.edit', $user->id) }}" class="btn btn-transparent editar mr-2">
-                                                     <i class="fas fa-edit"></i> Editar
+                                                <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-outline-info mr-2">
+                                                     <i class="fas fa-edit"></i>
                                                 </a>
 
                                                 <form action="{{ route('users.destroy', $user->id) }}" method="post" id="deleteForm{{ $user->id }}">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-outline-transparent eliminar" onclick="deleteUser({{ $user->id }})">
+                                                    <button type="submit" class="btn btn-sm btn-outline-danger" onclick="deleteUser({{ $user->id }})">
                                                          <i class='fas fa-trash'></i> 
                                                     </button>
                                                 </form>

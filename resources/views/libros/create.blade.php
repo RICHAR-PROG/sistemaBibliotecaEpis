@@ -8,11 +8,17 @@
 
 @section('content')
 <div class="row">
-    <div class="col-md-5 mx-auto border py-2">
-        <form method="POST" action="{{ url('/libros') }}" enctype="multipart/form-data" class="max-w-lg mx-2 p-2">
-            @csrf
-           @include('libros.form', ['modo'=>'Registrar']);
-        </form>
+    <div class="col-md-10 mx-auto border py-2">
+
+        <div class="card">
+            <div class="card-body">                
+                <form method="POST" action="{{ url('/libros') }}" enctype="multipart/form-data" class="max-w-lg mx-2 p-2">
+                    @csrf
+                   @include('libros.form', ['modo'=>'Registrar'])
+                </form>
+            </div>
+        </div>
+
     </div>
 </div>
 
