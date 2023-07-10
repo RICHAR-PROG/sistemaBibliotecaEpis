@@ -9,11 +9,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap4.min.css">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-    @endsection
+@endsection
 
 @section('content')
-    
-
     <div class="container-fluid py-5">
         <div class="card card-danger card-outline">
             <div class="card-header">
@@ -76,9 +74,6 @@
         </div>
     </div>
     </div>
-
-
-
 @stop
 
 @section('js')

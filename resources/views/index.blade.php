@@ -49,7 +49,7 @@
                         @endif
 
                         @if (Auth::user()->type_user == 'user')
-                            <a class="btn" href="">                        
+                            <a class="btn" href="{{route('userpage.index')}}">                        
                                 Home
                             </a>                        
                         @endif
@@ -62,9 +62,6 @@
                             <i class="bi bi-person-circle"></i>
                         </a>                    
                     @endguest
-
-
-                    
                    
                 </li>
             </ul>
