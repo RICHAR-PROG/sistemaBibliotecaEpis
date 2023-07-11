@@ -190,8 +190,8 @@ a:hover { color:#009999; }
 .navbar-brand i { font-size: 2rem; }
 
 .tm-hero {
-    min-height: 300px;
-    background-image: url("../storage/img/img.png");
+    min-height: 215px;
+    background-image: url("../storage/img/sistemasU.png");
     background-size: cover;
     background-repeat: no-repeat;
     

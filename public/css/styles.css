@@ -315,7 +315,7 @@
         }
 
         .cabecera__fondo--nitido {
-            background-image: url(../storage/img/img.png);
+            background-image: url('../storage/img/epis.jpeg');
             height: 275px;
             /*cambio original 375*/
             left: 0;
@@ -328,8 +328,8 @@
         }
 
         .cabecera__capa {
-            background-color: rgba(0, 0, 0, 0.5);
-            /*background-color: rgba(121, 4, 4, 0.5);*/
+            /* background-color: rgba(0, 0, 0, 0.5); */
+            /* background-color: rgba(121, 4, 4, 0.5); */
             bottom: 0;
             left: 0;
             position: absolute;
