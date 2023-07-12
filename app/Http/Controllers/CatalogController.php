@@ -18,5 +18,10 @@ class CatalogController extends Controller
         return view('userpage.page.index', compact('books'))->with('header', view('userpage.includes.header'))->with('footer', view('userpage.includes.footer'));
     
     }
+    // public function show($estado)
+    // {
+    //     $libro = Libros::find($estado);
+    //     return view('userpage.page.index', ['libro' => $libro]);
+    // }
     
 }

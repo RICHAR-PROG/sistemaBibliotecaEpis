@@ -45,7 +45,7 @@
                             @foreach($libros as $lib)
                             <tr>
                                 <td>
-                                    <img src="{{ asset("/storage/libros/".$lib->imagen) }}" alt="" width="100" height="100">                        </td>
+                                    <img src="{{ asset("/storage/uploads/portada/".$lib->imagen) }}" alt="" width="100" height="100">                        </td>
                                 <td>{{ $lib->dewey }}</td>
                                 <td>{{ $lib->titulo }}</td>
                                 <td>{{ $lib->autor }}</td>

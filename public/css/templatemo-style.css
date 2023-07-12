@@ -99,12 +99,10 @@ https://templatemo.com/tm-556-catalog-z
         transform: translateX(0);  /* Firefox 16+, IE 10+, Opera */
     }
 
-    #loader-wrapper .loader-section.section-left {
-        left: 0;
-    }
-
-    #loader-wrapper .loader-section.section-right {
-        right: 0;
+    
+    .not i{
+       color: red; 
+        
     }
 
     /* Loaded */
