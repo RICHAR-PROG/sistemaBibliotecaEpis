@@ -20,9 +20,13 @@ Route::get('boletas/pdf',[BoletasController::class,'pdf'])->name('boletas.pdf');
 
 Auth::routes();
 
+Route::get('boletas/pdf',[BoletasController::class,'pdf'])->name('boletas.pdf');
+
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth.admin');
 Route::resource('users', UsuariosController::class)->middleware('auth.admin');
 Route::resource('libros', LibrosController::class)->middleware('auth.admin');
 Route::resource('reportes', reportesController::class)->middleware('auth.admin');
+Route::resource('boletas', BoletasController::class)->middleware('auth.admin');
 
 Route::resource('/userpage', CatalogController::class);
