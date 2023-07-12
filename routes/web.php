@@ -27,5 +27,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('users', UsuariosController::class)->middleware('auth.admin');
 Route::resource('libros', LibrosController::class)->middleware('auth.admin');
 Route::resource('reportes', reportesController::class)->middleware('auth.admin');
+Route::resource('boletas', boletasController::class)->middleware('auth.admin');
 
 Route::resource('/userpage', CatalogController::class);

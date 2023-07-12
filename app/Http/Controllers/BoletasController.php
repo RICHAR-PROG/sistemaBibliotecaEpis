@@ -35,7 +35,6 @@ class BoletasController extends Controller
      */
     public function create()
     {
-        return view('libros.create');
     }
 
     /**
@@ -43,25 +42,7 @@ class BoletasController extends Controller
      */
     public function store(Request $request)
     {
-        $datosLibro=request()->except('_token');
-
-        // return $datosLibro;
-
-        if($request->hasFile('imagen')){
-            // $datosLibro['imagen']=$request->file('imagen')->store('uploads', 'public');
-
-            $file = $request->file('imagen');
-            $nombre_archivo = time().$file->getClientOriginalName();
-
-            //Se sube la imagen a la carpeta public/storage/libros/
-            $file->move(public_path()."/storage/libros/", $nombre_archivo);
-
-            $datosLibro['imagen'] = $nombre_archivo;
-
-        }
-
-        User::insert($datosLibro);
-        return redirect('libros');
+        
     }
 
     /**
@@ -77,8 +58,6 @@ class BoletasController extends Controller
      */
     public function edit($id)
     {
-        $libros=User::findOrFail($id);
-        return view('libros.edit',compact('libros'));
     }
 
     /**
@@ -86,25 +65,7 @@ class BoletasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $datosLibro=request()->except(['_token','_method']);
-        if($request->hasFile('imagen')){
-            $libros=User::findOrFail($id);
-            $file_path = public_path().'/storage/libros/'.$libros->imagen;
-            File::delete($file_path);
-
-            $file = $request->file('imagen');
-            $nombre_archivo = time().$file->getClientOriginalName();
-
-            //Se sube la imagen a la carpeta public/storage/libros/
-            $file->move(public_path()."/storage/libros/", $nombre_archivo);
-
-            $datosLibro['imagen'] = $nombre_archivo;
-        }
-
-        User::where('id','=',$id)->update($datosLibro);
-
-        $libros=User::findOrFail($id);
-        return view('libros.edit',compact('libros'));
+        
     }
 
     /**
@@ -112,12 +73,6 @@ class BoletasController extends Controller
      */
     public function destroy($id)
     {
-        $libro = User::findOrFail($id);
-
-        $file_path = public_path().'/storage/libros/'.$libro->imagen;
-        File::delete($file_path);
-        $libro->delete();
-
-        return redirect('libros');
+        
     }
 }
