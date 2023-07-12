@@ -313,7 +313,7 @@ return [
         ],
         [
             'text' => 'Boletas',
-            'url'  => 'admin/settings',
+            'url'  => 'boletas',
             'icon' => 'fas fa-fw fa-clipboard-list',
         ],
         [
