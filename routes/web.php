@@ -6,6 +6,7 @@ use App\Http\Controllers\UsuariosController;
 use App\Http\Controllers\LibrosController;
 use App\Http\Controllers\ReportesController;
 use App\Http\Controllers\CatalogController;
+use App\Http\Controllers\BoletasController;
 use App\Models\libros;
 
 
@@ -15,7 +16,7 @@ use App\Models\libros;
 // });
 
 Route::view('/', 'index')->name('index');
-
+Route::get('boletas/pdf',[BoletasController::class,'pdf'])->name('boletas.pdf');
 
 Auth::routes();
 
