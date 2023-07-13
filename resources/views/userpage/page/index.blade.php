@@ -39,7 +39,9 @@
                             @if ($book->formato == 'PDF')
                             <strong>titulo: </strong><br>{{ $book->titulo }} <br>
                             <strong>autor: </strong><br>{{ $book->autor }}<br><br>
-                            <div class="btn btn-success">leer </div>
+                            {{-- <div class="btn btn-success">leer </div> --}}
+                            
+                            <a href="{{ route('catalog.pdf.show', $book['PDF']) }}" type="btn" class="btn btn-success">Ver PDF</a>
 
                             @elseif($book->formato == 'Fisico')
                             <strong>titulo: </strong><br>{{ $book->titulo }} <br>

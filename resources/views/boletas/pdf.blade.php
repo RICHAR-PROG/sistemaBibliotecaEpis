@@ -8,6 +8,14 @@
 </head>
 
 <body>
+
+    <div class="boleta">
+        <h2>Boleta de préstamo de libro</h2>
+        <p><strong>Fecha de préstamo:</strong> </p>
+        <p><strong>Fecha de devolución:</strong> </p>
+        <p><strong>Libro:</strong></p>
+        <p><strong>Usuario:</strong></p>
+    </div>
     <table class="table table-sm table-striped   table-full-width table-hover align-middle" id="users">
         <thead class="bg-gradient-danger text-center">
             <tr>

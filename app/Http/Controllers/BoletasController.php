@@ -22,11 +22,9 @@ class BoletasController extends Controller
     
     public function pdf()
     {
-        /*$datos['users']=User::paginate();
-        return view('boletas.index',$datos);*/
+        
         $users=User::paginate();
         $pdf=PDF::loadView('boletas.pdf',['users'=>$users]);
-       // return view('boletas.index',compact('users'));
        return $pdf->stream();
     }
 
