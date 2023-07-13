@@ -30,16 +30,7 @@
             <input type="text" class="form-control" value="{{ isset($libros->editorial) ? $libros->editorial : '' }}" id="editorial"
                 name="editorial" required>
         </div>
-        <div class="form-group">
-            <label for="cantidad">Cantidad:</label>
-            <select class="form-control" id="cantidad" name="cantidad" required>
-                <option value="">Seleccione una opción</option>
-                <option value="1" {{ isset($libros->cantidad) && $libros->cantidad == '1' ? 'selected' : '' }}>
-                    1</option>
-                <option value="0" {{ isset($libros->cantidad) && $libros->cantidad== '0' ? 'selected' : '' }}>
-                    0</option>
-            </select>
-        </div>
+        
     </div>
     <div class="col-6">
         <div class="form-group">
@@ -67,16 +58,7 @@
             <input type="file" class="form-control" value="{{ isset($libros->PDF) ? $libros->PDF : '' }}" id="PDF"
                 name="PDF" accept=".pdf">
         </div>
-        <div class="form-group">
-            <label for="estado">Estado:</label>
-            <select class="form-control" id="estado" name="estado" required>
-                <option value="">Seleccione una opción</option>
-                <option value="Disponible" {{ isset($libros->estado) && $libros->estado == 'Disponible' ? 'selected' : '' }}>
-                    Disponible</option>
-                <option value="Prestado" {{ isset($libros->estado) && $libros->estado == 'Prestado' ? 'selected' : '' }}>
-                    Prestado</option>
-            </select>
-        </div>
+        
         <div class="form-group">
             <label for="stock">Stock:</label>
             <input type="number" class="form-control" value="{{ isset($libros->stock) ? $libros->stock : '' }}" id="stock" name="stock" required>

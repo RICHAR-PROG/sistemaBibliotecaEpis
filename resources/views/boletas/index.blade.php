@@ -8,7 +8,12 @@
 
 
 @section('content')
- <a href="{{ url('boletas/pdf') }}" class="btn btn-block btn-outline-primary btn-sm" target="_blank">PDF</a>
+<div class="row">
+    <div class="col-md-4 ">
+        <a href="{{ url('boletas/pdf') }}" class="btn btn-block btn-outline-primary btn-sm" target="_blank">PDF</a>
+    </div>
+</div>
+
 @stop
 
 @section('css')
