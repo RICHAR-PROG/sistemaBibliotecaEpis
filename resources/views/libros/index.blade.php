@@ -5,6 +5,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap4.min.css">
 <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
 @endsection
 
@@ -50,8 +51,17 @@
                                 <td>{{ $lib->titulo }}</td>
                                 <td>{{ $lib->autor }}</td>
                                 <td>{{ $lib->editorial }}</td>
-                                <td>{{ $lib->estado }}</td>
-                                <td>{{ $lib->stock }}</td>
+                                <td>
+                                    @if ($lib->stock > 0 && $lib->formato == 'Fisico')
+                                    <span><i class="bi bi-check-square"></i> Disponible</span>
+                                    @elseif($lib->stock <= 0 && $lib->formato == 'Fisico')
+                                    <p class="not"><i class="bi bi-exclamation-triangle-fill"> no disponible </i></p>
+                                    @else
+                                    <p><i class="bi bi-file-earmark-pdf"></i> view online </p>
+                                    @endif
+
+                                </td>
+                                <td>{{ $lib->stock }} </td>
                                 <td>{{ $lib->formato }}</td>
                                 <td>
                                     <div class="d-flex ">

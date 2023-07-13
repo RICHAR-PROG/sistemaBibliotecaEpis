@@ -3,7 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1 class="text-center">Actualizar usuarios</h1>
+    <br>
 @endsection
 
 @section('content')
