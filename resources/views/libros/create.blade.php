@@ -12,7 +12,7 @@
 
         <div class="card card card-danger card-outline">
             <div class="card-header">
-                <h3 class="card-title">Añadir libros</h3>
+                <h3 class="card-title">Registrar libros</h3>
             </div>
             <div class="card-body">                
                 <form method="POST" action="{{ url('/libros') }}" enctype="multipart/form-data" class="max-w-lg mx-2 p-2">
