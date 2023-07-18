@@ -10,29 +10,14 @@
     <div class="row">
         <div class="col-md-8 mx-auto  py-2">
 
-            {{-- Muestra un error del formulario --}}
-            @if ($errors->any())
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                        <li> {{ $error }}</li>
-                        @endforeach
-                    </ul>
-                    
-                </div>
-            @endif
-
-
             <div class="card card-danger card-outline"">
                 <div class="card-header">{{ __('Actualizar usuario') }}</div>
 
                 <div class="card-body">
 
-                    <form method="POST" action="{{ route('users.update', $usuario->id) }}" enctype="multipart/form-data"  class="max-w-lg mx-2 p-2">
+                    <form method="POST" action="{{ route('users.edit', $usuario->id) }}" enctype="multipart/form-data"  class="max-w-lg mx-2 p-2">
                         @csrf
                         @method('PUT')
-                        
-        
                         <div class="row mb-3">
                             <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Nombre') }}</label>        
                             <div class="col-md-6">

@@ -32,22 +32,26 @@
         @foreach ($books as $book)
             <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
                 <figure class="effect-ming tm-video-item">
-                    <img src="{{ asset("/storage/uploads/portada/". $book->imagen) }}" height="500" alt="Image"
+                    <img src="{{ asset('/storage/uploads/portada/' . $book->imagen) }}" height="500" alt="Image"
                         class="img-fluid">
                     <figcaption class="d-flex align-items-center justify-content-center">
                         <h2>
-                            @if ($book->formato == 'PDF')
-                            <strong>titulo: </strong><br>{{ $book->titulo }} <br>
-                            <strong>autor: </strong><br>{{ $book->autor }}<br><br>
+                           
                             {{-- <div class="btn btn-success">leer </div> --}}
-                            
-                            <a href="{{ route('catalog.pdf.show', $book['PDF']) }}" type="btn" class="btn btn-success">Ver PDF</a>
+
+                            {{-- <a href="{{ route('catalog.pdf.show', $book['PDF']) }}" type="btn"
+                                    class="btn btn-success">Ver PDF</a> --}}
+
+                            @if ($book->formato == 'PDF')
+                                <strong>Título:</strong><br>{{ $book->titulo }}<br>
+                                <strong>Autor:</strong><br>{{ $book->autor }}<br><br>
+                                <a href="{{asset('/storage/uploads/pdf/'.$book->PDF)}}" target="_blank" class="btn btn-sm btn-outline-success">Ver pdf</a> 
 
                             @elseif($book->formato == 'Fisico')
-                            <strong>titulo: </strong><br>{{ $book->titulo }} <br>
-                            <strong>autor: </strong><br>{{ $book->autor }}<br><br>
-                            <div class="btn btn-success">prestamo</div>
-                            @else
+                                <strong>Título:</strong><br>{{ $book->titulo }}<br>
+                                <strong>Autor:</strong><br>{{ $book->autor }}<br><br>
+                                <button   {{ route('index',$book->PDF) }} type="button" class="btn btn-success">Prestar libro</button>
+                            @else()
                                 {{ $book->titulo }} - Formato desconocido
                             @endif
                         </h2>
@@ -58,13 +62,13 @@
                 <div class="d-flex justify-content-between tm-text-gray">
                     <span class="tm-text-gray-dark bold"> {{ $book->titulo }}</span>
                     @if ($book->stock > 0 && $book->formato == 'Fisico')
-                    <span>{{ $book->stock }} ejemplares</span>
+                        <span>{{ $book->stock }} ejemplares</span>
                     @elseif($book->stock <= 0 && $book->formato == 'Fisico')
-                    <p class="not"><i class="bi bi-exclamation-triangle-fill"> no disponible </i></p>
+                        <p class="not"><i class="bi bi-exclamation-triangle-fill"> no disponible </i></p>
                     @else
-                    <p><i class="bi bi-file-earmark-pdf"></i> view online </p>
+                        <p><i class="bi bi-file-earmark-pdf"></i> view online </p>
                     @endif
-                    
+
                 </div>
             </div>
         @endforeach
@@ -72,5 +76,25 @@
 
     {!! $footer !!}
 
-    <script></script>
+    {{-- <script>
+        function prestarLibro(libroId) {
+            $.ajax({
+                url: '{{ route('prestamos.prestar') }}',
+                type: 'POST',
+                data: {
+                    libro_id: libroId,
+                    user_id: '{{ Auth::user()->id }}',
+                    fecha_prestamo: new Date().toISOString().slice(0, 10),
+                    _token: '{{ csrf_token() }}'
+                },
+                success: function(response) {
+                    alert(response.message);
+                    location.reload();
+                },
+                error: function(xhr) {
+                    alert('Error al procesar el préstamo.');
+                }
+            });
+        }
+    </script> --}}
     {{-- @extends('userpage.includes.footer') --}}

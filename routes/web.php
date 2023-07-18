@@ -7,6 +7,7 @@ use App\Http\Controllers\LibrosController;
 use App\Http\Controllers\ReportesController;
 use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\BoletasController;
+use App\Http\Controllers\PrestamosController;
 use App\Models\libros;
 
 
@@ -23,10 +24,10 @@ Auth::routes();
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth.admin');
-Route::resource('users', UsuariosController::class)->middleware('auth.admin');
-Route::resource('libros', LibrosController::class)->middleware('auth.admin');
+Route::resource('users', UsuariosController::class);
+Route::resource('libros', LibrosController::class);
 Route::resource('reportes', reportesController::class)->middleware('auth.admin');
 Route::resource('boletas', boletasController::class)->middleware('auth.admin');
 
 Route::resource('/userpage', CatalogController::class);
-Route::get('catalog/pdf/{filename}', [CatalogController::class, 'showPdf'])->name('catalog.pdf.show');
+Route::post('/prestamos/prestar', [PrestamosController::class, 'prestarLibro'])->name('prestamos.prestar');
