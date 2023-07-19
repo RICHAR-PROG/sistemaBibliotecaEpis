@@ -14,7 +14,7 @@
 <div class="container-fluid py-5">
     <div class="card card-danger card-outline">
         <div class="card-header">
-            <h3 class="card-title">Lista de libros</h3>
+            <h3 class="card-title">Acervo bibliografico</h3>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
