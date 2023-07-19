@@ -1,11 +1,9 @@
-{{-- @include('header')
-
-@include('footer'); --}}
-{{-- @extends('userpage.includes.header') --}}
-
-{!! $header !!}
+@extends('userpage.layouts.template')
 
 
+@section('content')
+
+    
 <div class="tm-hero d-flex justify-content-center align-items-center" data-parallax="scroll"
     data-image-src="{{ asset('storage/img/img.png') }}">
     <form class="d-flex tm-search-form">
@@ -28,6 +26,7 @@
             </form>
         </div>
     </div>
+
     <div class="row tm-mb-90 tm-gallery">
         @foreach ($books as $book)
             <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
@@ -36,21 +35,21 @@
                         class="img-fluid">
                     <figcaption class="d-flex align-items-center justify-content-center">
                         <h2>
-                           
-                            {{-- <div class="btn btn-success">leer </div> --}}
-
-                            {{-- <a href="{{ route('catalog.pdf.show', $book['PDF']) }}" type="btn"
-                                    class="btn btn-success">Ver PDF</a> --}}
 
                             @if ($book->formato == 'PDF')
                                 <strong>Título:</strong><br>{{ $book->titulo }}<br>
                                 <strong>Autor:</strong><br>{{ $book->autor }}<br><br>
-                                <a href="{{asset('/storage/uploads/pdf/'.$book->PDF)}}" target="_blank" class="btn btn-sm btn-outline-success">Ver pdf</a> 
+                                <a href="{{asset('/storage/uploads/pdf/'.$book->PDF)}}" target="_blank" class="btn btn-sm btn-success">Leer</a> 
 
                             @elseif($book->formato == 'Fisico')
                                 <strong>Título:</strong><br>{{ $book->titulo }}<br>
                                 <strong>Autor:</strong><br>{{ $book->autor }}<br><br>
-                                <button   {{ route('index',$book->PDF) }} type="button" class="btn btn-success">Prestar libro</button>
+
+
+                                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalSolicitar-{{$book->id}}">
+                                    Solicitar el libro
+                                </button>
+
                             @else()
                                 {{ $book->titulo }} - Formato desconocido
                             @endif
@@ -71,30 +70,9 @@
 
                 </div>
             </div>
+
+            @include('userpage.page.modal-solicitar-libro')
+
         @endforeach
     </div>
-
-    {!! $footer !!}
-
-    {{-- <script>
-        function prestarLibro(libroId) {
-            $.ajax({
-                url: '{{ route('prestamos.prestar') }}',
-                type: 'POST',
-                data: {
-                    libro_id: libroId,
-                    user_id: '{{ Auth::user()->id }}',
-                    fecha_prestamo: new Date().toISOString().slice(0, 10),
-                    _token: '{{ csrf_token() }}'
-                },
-                success: function(response) {
-                    alert(response.message);
-                    location.reload();
-                },
-                error: function(xhr) {
-                    alert('Error al procesar el préstamo.');
-                }
-            });
-        }
-    </script> --}}
-    {{-- @extends('userpage.includes.footer') --}}
+@endsection

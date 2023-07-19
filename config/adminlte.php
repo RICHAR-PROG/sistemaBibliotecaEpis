@@ -312,8 +312,8 @@ return [
             'icon' => 'fas fa-fw fa-book',
         ],
         [
-            'text' => 'Boletas',
-            'url'  => 'boletas',
+            'text' => 'Préstamos',
+            'url'  => 'prestamos',
             'icon' => 'fas fa-fw fa-clipboard-list',
         ],
         [

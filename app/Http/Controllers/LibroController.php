@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\libros;
+use App\Models\Libro;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
-class LibrosController extends Controller
+
+class LibroController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $datos['libros']=Libros::paginate();
+        $datos['libros']=Libro::paginate();
         return view('libros.index',$datos);
     }
 
@@ -53,7 +53,7 @@ class LibrosController extends Controller
     //         $datosLibro['Pdf'] = $nombre_pdf;
     //     }
 
-    //     Libros::insert($datosLibro);
+    //     Libro::insert($datosLibro);
     //     return redirect('libros');
 
     // }
@@ -75,14 +75,14 @@ class LibrosController extends Controller
         $datosLibro['PDF'] = $nombre_pdf;
     }
 
-    Libros::insert($datosLibro);
+    Libro::insert($datosLibro);
         return redirect('libros');
 }
 
     /**
      * Display the specified resource.
      */
-    public function show(libros $libros)
+    public function show(Libro $libro)
     {
         //
     }
@@ -92,7 +92,7 @@ class LibrosController extends Controller
      */
     public function edit($id)
     {
-        $libros=Libros::findOrFail($id);
+        $libros=Libro::findOrFail($id);
         return view('libros.edit',compact('libros'));
     }
 
@@ -103,7 +103,7 @@ class LibrosController extends Controller
     {
         $datosLibro=request()->except(['_token','_method']);
         if($request->hasFile('imagen')){
-            $libros=Libros::findOrFail($id);
+            $libros=Libro::findOrFail($id);
             $file_path = public_path().'/storage/libros/'.$libros->imagen;
             File::delete($file_path);
 
@@ -116,9 +116,9 @@ class LibrosController extends Controller
             $datosLibro['imagen'] = $nombre_archivo;
         }
 
-        Libros::where('id','=',$id)->update($datosLibro);
+        Libro::where('id','=',$id)->update($datosLibro);
 
-        $libros=Libros::findOrFail($id);
+        $libros=Libro::findOrFail($id);
         return view('libros.edit',compact('libros'));
     }
 
@@ -127,7 +127,7 @@ class LibrosController extends Controller
      */
     public function destroy($id)
     {
-        $libro = Libros::findOrFail($id);
+        $libro = Libro::findOrFail($id);
 
         $file_path = public_path().'/storage/libros/'.$libro->imagen;
         File::delete($file_path);

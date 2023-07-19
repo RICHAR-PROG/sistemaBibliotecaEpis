@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('imagen');
             $table->string('genero');
             $table->string('formato');
-            $table->string('stock')->nullable();
+            $table->integer('stock')->nullable();
             $table->text('PDF')->nullable();
             $table->timestamps();
         });

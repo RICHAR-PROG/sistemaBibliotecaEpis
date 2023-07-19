@@ -8,6 +8,7 @@
 
 @section('content')
     <p>Escuela Profesional de Ingenieria de Sistemas</p>
+    <img src="{{asset('storage/img/biblioteca-01.jpg')}}" class="rounded img-fluid" alt="Biblioteca">
 @stop
 
 @section('css')
@@ -16,4 +17,4 @@
 
 @section('js')
     <script> console.log('Hi!'); </script>
-@stop
+@endsection

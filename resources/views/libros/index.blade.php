@@ -85,7 +85,6 @@
         <!-- /.card-body -->
     </div>
 </div>
-</div>
 @stop
 
 @section('css')

@@ -15,8 +15,9 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('libro_id');
-            $table->date('fecha_prestamo');
+            $table->date('fecha_prestamo')->nullable();
             $table->date('fecha_devolucion')->nullable();
+            $table->string('estado', 25)->nullable(); //SOLICITADO, CANCELADO, RECHAZADO, ACEPTADO, DEVUELTO
             $table->timestamps();
         
             $table->foreign('user_id')->references('id')->on('users');
