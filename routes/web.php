@@ -3,40 +3,26 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuariosController;
-use App\Http\Controllers\LibrosController;
 use App\Http\Controllers\ReportesController;
+use App\Http\Controllers\CatalogController;
+use App\Http\Controllers\BoletasController;
+use App\Http\Controllers\LibroController;
+use App\Http\Controllers\PrestamoController;
 
 
 
-// Route::get('/', function () {
-//     return view('index');
-// });
 
 Route::view('/', 'index')->name('index');
-
+Route::get('boletas/pdf',[BoletasController::class,'pdf'])->name('boletas.pdf');
 
 Auth::routes();
 
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth.admin');
 Route::resource('users', UsuariosController::class)->middleware('auth.admin');
-Route::resource('libros', LibrosController::class)->middleware('auth.admin');
+Route::resource('libros', LibroController::class)->middleware('auth');
 Route::resource('reportes', reportesController::class)->middleware('auth.admin');
+Route::resource('boletas', boletasController::class)->middleware('auth.admin');
 
-// Route::get('/users/create', [UsuariosController::class,'create']);
-
-Route::get('/userpage', function () {
-    return view('userpage.page.index', [
-        'header' => view('userpage.includes.header'),
-        'footer' => view('userpage.includes.footer'),
-    ]);
-});
-Route::get('/userpage/calificacion', function () {
-    return view('userpage.page.calificacion', [
-        'header' => view('userpage.includes.header'),
-        'footer' => view('userpage.includes.footer'),
-    ]);
-});
-// Route::get('/register',[App\Http\Controllers\Auth\RegisterController::class, ''])->name('home');
-
-
-
+Route::resource('/userpage', CatalogController::class);
+Route::resource('prestamos', PrestamoController::class)->middleware('auth');

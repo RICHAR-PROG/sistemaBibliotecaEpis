@@ -43,29 +43,26 @@
                     @auth
 
                         @if (Auth::user()->type_user == 'admin')
-                            <a class="btn" href="{{route('users.index')}}">                        
+                            <a class="btn" href="{{route('users.index')}}">
                                 Dashboard
-                            </a>                        
+                            </a>
                         @endif
 
                         @if (Auth::user()->type_user == 'user')
-                            <a class="btn" href="">                        
+                            <a class="btn" href="{{route('userpage.index')}}">
                                 Home
-                            </a>                        
+                            </a>
                         @endif
-                   
+
                     @endauth
-                    
+
                     @guest
-                        <a type="button" class="btn" data-bs-toggle="modal" data-bs-target="#admin">                        
+                        <a type="button" class="btn" data-bs-toggle="modal" data-bs-target="#admin">
                             Ingresar
                             <i class="bi bi-person-circle"></i>
-                        </a>                    
+                        </a>
                     @endguest
 
-
-                    
-                   
                 </li>
             </ul>
         </nav>
@@ -153,82 +150,6 @@
                 </div>
             </div>
         </div>
-
-        {{-- <div class="modal fade shadow-lg" id="student" tabindex="3" data-bs-backdrop="static"
-            data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered " role="document">
-                <div class="modal-content shadow-lg bg-white">
-                    <div class="modal-header">
-                        <h5 class="modal-title text-dark" id="modalTitleId">ESTUDIANTE</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                            aria-label="Close"></button>
-                    </div>
-                    <img src="{{ asset('storage/img/sistemas.png') }}" alt="Logo Sistemas" class="logos">
-                    <div class="modal-body">
-                        <div class="container py-4">
-                            <div class="card-body">
-                                <form method="POST" action="{{ route('login') }}">
-                                    @csrf
-                                    <div class="row mb-3">
-                                        <div class="col-md-12">
-                                            <input id="email" type="email"
-                                                class="form-control @error('email') is-invalid @enderror"
-                                                name="email" value="{{ old('email') }}" required
-                                                autocomplete="email" autofocus placeholder="Correo Electrónico"
-                                                pattern=".+@unh.edu.pe"
-                                                title="Ingrese con su correo institucional de la UNH">
-
-                                            @error('email')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-
-                                    <div class="row mb-3">
-                                        <div class="col-md-12 ">
-                                            <input id="password" type="password"
-                                                class="form-control @error('password') is-invalid @enderror"
-                                                name="password" required autocomplete="current-password"
-                                                placeholder="Contraseña">
-
-                                            @error('password')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-
-                                    <div class="row mb-3">
-                                        <div class="col-md-6 ">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" name="remember"
-                                                    id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                                <label class="form-check-label text-dark" for="remember">
-                                                    {{ __('Recuerdame') }}
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-0">
-                                        <div class="col-md-8 offset-md-4 ">
-                                            <button type="submit" class="btn btn-primary">
-                                                {{ __('Iniciar Sesión') }}
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div> --}}
-
     </main>
     <section class="section1-center">
         <br><br><br><br>

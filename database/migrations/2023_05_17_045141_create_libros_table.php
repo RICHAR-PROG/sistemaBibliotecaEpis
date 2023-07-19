@@ -18,12 +18,11 @@ return new class extends Migration
             $table->string('autor');
             $table->date('fecha_edicion');
             $table->string('editorial');
-            $table->integer('cantidad');
             $table->date('fecha_adquisicion');
             $table->string('imagen');
-            $table->string('estado');
             $table->string('genero');
             $table->string('formato');
+            $table->integer('stock')->nullable();
             $table->text('PDF')->nullable();
             $table->timestamps();
         });

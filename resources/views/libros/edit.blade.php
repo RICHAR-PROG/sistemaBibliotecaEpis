@@ -2,27 +2,28 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-<br>
+   
 @stop
 
 @section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">{{ __('Registrar Libros') }}</div>
+    <div class="row ">
+        <div class="col-md-10 mx-auto py-2">
+            <div class="card card card-danger card-outline">
 
-                    <div class="card-body">
-                        <form action="{{ url('/libros/' . $libros->id) }}" method="post" enctype="multipart/form-data">
-                            @csrf
-                            {{ method_field('PATCH') }}
-                            @include('libros.form', ['modo' => 'Actualizar'])
-                        </form>
-                    </div>
+                <div class="card-header">{{ __('Registrar Libros') }}</div>
+
+                <div class="card-body">
+                    <form action="{{ url('/libros/' . $libros->id) }}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        {{ method_field('PATCH') }}
+                        @include('libros.form', ['modo' => 'Actualizar'])
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+    </div>
+
 @stop
 
 @section('css')
@@ -31,6 +32,24 @@
 
 @section('js')
     <script>
-        console.log('Hi!');
+        const formatoSelect = document.getElementById('formato');
+        const pdfInput = document.getElementById('PDF');
+
+        formatoSelect.addEventListener('change', () => {
+            if (formatoSelect.value === 'Fisico') {
+                pdfInput.disabled = true;
+            } else {
+                pdfInput.disabled = false;
+            }
+        });
+        const stockInput = document.getElementById('stock');
+
+        formatoSelect.addEventListener('change', () => {
+            if (formatoSelect.value === 'PDF') {
+                stockInput.disabled = true;
+            } else {
+                stockInput.disabled = false;
+            }
+        });
     </script>
 @stop

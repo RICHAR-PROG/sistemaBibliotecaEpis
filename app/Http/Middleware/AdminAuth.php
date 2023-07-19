@@ -21,6 +21,6 @@ class AdminAuth
             return $next($request);
         }
 
-        return redirect()->route("index");
+        return redirect()->route("userpage.index");
     }
 }

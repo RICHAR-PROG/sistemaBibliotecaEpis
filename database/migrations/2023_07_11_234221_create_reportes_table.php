@@ -11,8 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('libros', function (Blueprint $table) {
-            $table->integer('stock')->nullable()->after('cantidad');
+        Schema::create('reportes', function (Blueprint $table) {
+            $table->id();
+            $table->integer('cod_matricula');
+            $table->integer('n_control');
+            $table->string('usuario');
+            $table->date('fecha_entrega');
+            $table->date('fecha_devolución');
         });
     }
 
@@ -21,8 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('libros', function (Blueprint $table) {
-            $table->dropColumn('stock');
-        });
+        Schema::dropIfExists('reportes');
     }
 };
